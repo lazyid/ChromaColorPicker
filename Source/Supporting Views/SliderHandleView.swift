@@ -53,17 +53,31 @@ public class SliderHandleView: UIView {
     }
     
     private func makeRoundedTrianglePath(width: CGFloat, height: CGFloat, radius: CGFloat) -> CGPath {
-        let point1 = CGPoint(x: -width / 2, y: height / 2)
-        let point2 = CGPoint(x: 0, y: -height / 2)
-        let point3 = CGPoint(x: width / 2, y: height / 2)
+//        let point1 = CGPoint(x: -width / 2, y: height / 2)
+//        let point2 = CGPoint(x: 0, y: -height / 2)
+//        let point3 = CGPoint(x: width / 2, y: height / 2)
         
-        let path = CGMutablePath()
-        path.move(to: CGPoint(x: 0, y: height / 2))
-        path.addArc(tangent1End: point1, tangent2End: point2, radius: radius)
-        path.addArc(tangent1End: point2, tangent2End: point3, radius: radius)
-        path.addArc(tangent1End: point3, tangent2End: point1, radius: radius)
-        path.closeSubpath()
+        let paths = CGMutablePath()
+//        path.move(to: CGPoint(x: 0, y: height / 2))
+//        path.addArc(tangent1End: point1, tangent2End: point2, radius: radius)
+//        path.addArc(tangent1End: point2, tangent2End: point3, radius: radius)
+//        path.addArc(tangent1End: point3, tangent2End: point1, radius: radius)
+//        let x = [0, width / 2, 2, 3, 0]
+//        let y = [0, height / 2, 2, 3, 0]
+//        path.move(to: CGPoint(x: x[0], y: y[0]))
+//        for i in 1..<x.count {
+//            let nextPoint = CGPoint(x: x[i], y: y[i])
+//            if i == x.count - 1 {
+//                path.addLine(to: nextPoint)
+//            } else {
+//                let pointAfterNext = CGPoint(x: x[i + 1], y: y[i + 1])
+//                path.addArc(tangent1End: nextPoint, tangent2End: pointAfterNext, radius: radius)
+//            }
+//        }
+        paths.addArc(center: CGPoint(x: 0, y: -height / 2 + 8), radius: radius+8, startAngle: 0, endAngle: .pi * 2, clockwise: true)
+
+        paths.closeSubpath()
         
-        return path
+        return paths
     }
 }
